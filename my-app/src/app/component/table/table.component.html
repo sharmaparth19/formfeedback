@@ -1,0 +1,27 @@
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Gender</th>
+      <th>Category</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let data of response">
+      <tr>
+        <td>{{ data.name }}</td>
+        <td>{{ data.age }}</td>
+        <td>{{ data.gender }}</td>
+        <td>{{ data.category }}</td>
+        <td>
+          <button class="delete-button" (click)="deleteFeedbackPost(data._id)">Delete</button>
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>
+<div class="container" (click)="onAddButtonClick()">
+  <button class="add-button">Add</button>
+</div>

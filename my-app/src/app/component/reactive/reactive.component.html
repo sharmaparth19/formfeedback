@@ -1,0 +1,46 @@
+<!-- reactive.component.html -->
+
+<div class="form-container">
+  <div [formGroup]="userForm">
+    <label>
+      Name:
+      <input type="text" formControlName="Name">
+    </label>
+    <div class="error-message" *ngIf="userForm.get('Name').invalid && userForm.get('Name').touched">
+      Name is required.
+    </div>
+    
+    <label>
+      Age:
+      <input type="text" formControlName="Age">
+    </label>
+    <div class="error-message" *ngIf="userForm.get('Age').invalid && userForm.get('Age').touched">
+      Age is required.
+    </div>
+    
+    <label>
+      Gender:
+      <select formControlName="gender">
+        <option value="" disabled selected>Select Gender</option>
+        <option *ngFor="let gender of genders" [value]="gender">{{ gender }}</option>
+      </select>
+    </label>
+    <div class="error-message" *ngIf="userForm.get('gender').invalid && userForm.get('gender').touched">
+      Gender is required.
+    </div>
+
+    <label>
+      Category:
+      <input type="text" formControlName="Category">
+    </label>
+    <div class="error-message" *ngIf="userForm.get('Category').invalid && userForm.get('Category').touched">
+      Category is required.
+    </div>
+
+    <button (click)="posttheFeedback()" [disabled]="userForm.invalid">Submit</button>
+  </div>
+
+  <div class="loader" *ngIf="loader">Loading...</div>
+</div>
+
+

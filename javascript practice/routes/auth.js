@@ -21,12 +21,14 @@ router.post('/register',async(req,res) =>{
         //create new user
         const user = new User({
             username:req.body.username,
-            password:hasPassword
+            password:hasPassword,
+            name: req.body.name
         })
         //save the user
         await user.save();
         res.status(200).json({ message: 'User registered successfully' });
     }catch(err){
+        console.log(">>>>>>>>>>>>>>>>>>",err)
         res.status(500).send("Internal Server Error")
     }
 })

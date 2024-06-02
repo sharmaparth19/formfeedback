@@ -52,7 +52,7 @@ router.post('/login',async(req,res) => {
         //create and send jwt tocken
         const jwtSecretKey = crypto.randomBytes(32).toString('hex');
         const token = jwt.sign({_id:user._id},jwtSecretKey)
-        res.header('auth-token',token).send(token);
+        res.header('auth-token',token).send({token});
     }catch(err){
         res.status(500).json({ message: 'Internal server error' });
     }

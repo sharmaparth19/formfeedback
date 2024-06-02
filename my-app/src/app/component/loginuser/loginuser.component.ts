@@ -22,6 +22,7 @@ export class LoginuserComponent {
   public loader: boolean = false
   genders: any;
   formvalue: any;
+  token: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -39,10 +40,15 @@ export class LoginuserComponent {
     })
   }
 
+  ngOnInit(){
+  }
+
   loginTheUser(){
     const payload = this.registerService.payload(this.loginForm.value)
     this.registerService.loginUser(payload).subscribe((res) => {
       console.log("user login sucessfully")
+      this.token = res?.token
+      sessionStorage.setItem("token", this.token);
     })
   }
 
